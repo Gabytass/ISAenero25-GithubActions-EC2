@@ -1,4 +1,4 @@
-name: Despliegue a EC2
+name: Despliegue EC2
 
 on:
   push:
@@ -7,18 +7,19 @@ on:
     branches: [ "main" ]
 
 jobs:
+
   deploy:
     name: Despliegue a EC2 en la rama main
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout files
-        uses: actions/checkout@v2
+     steps:
+    - name: Checkout files
+      uses: actions/checkout@v2
 
-      - name: Deploy to Server SrvPablo
-        uses: easingthemes/ssh-deploy@main
-        env: 
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
+    - name: Deploy to Server SrvGabyss
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+        REMOTE_HOST: ${{ secrets.HOST_DNS }}
+        REMOTE_USER: ${{ secrets.USERNAME }}
+        TARGET: ${{ secrets.TARGET_DIR }}
