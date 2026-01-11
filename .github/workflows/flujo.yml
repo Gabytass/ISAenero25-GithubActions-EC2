@@ -17,5 +17,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ec2-user
-          TARGET: /home/ec2-user/app
+          TARGET_DIR: /var/www/html/
+
+
 
