@@ -2,24 +2,23 @@ name: Despliegue Gabyss EC2
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-
   deploy:
     name: Despliegue a EC2 en la rama main
     runs-on: ubuntu-latest
 
-     steps:
-    - name: Checkout files
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v4
 
-    - name: Deploy to Server SrvGabyss
-      uses: easingthemes/ssh-deploy@main
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-        REMOTE_HOST: ${{ secrets.HOST_DNS }}
-        REMOTE_USER: ${{ secrets.USERNAME }}
-        TARGET: ${{ secrets.TARGET_DIR }}
+      - name: Deploy to Server SrvGabyss
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
