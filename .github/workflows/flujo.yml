@@ -1,4 +1,4 @@
-name: Despliegue Gabyss EC2
+name: Despliegue Gabyss para EC2
 
 on:
   push:
